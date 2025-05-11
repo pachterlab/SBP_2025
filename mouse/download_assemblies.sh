@@ -32,3 +32,10 @@ mv PRJNA923323/GCA_029237265/ncbi_dataset/data/GCA_029237265.1/GCA_029237265.1_A
 mv PRJNA923323/GCA_029255665/ncbi_dataset/data/GCA_029255665.1/GCA_029255665.1_ASM2925566v1_genomic.fna PRJNA923323/Mus_musculus_aj.fa
 mv PRJNA923323/GCA_029255695/ncbi_dataset/data/GCA_029255695.1/GCA_029255695.1_ASM2925569v1_genomic.fna PRJNA923323/Mus_musculus_129s1svimj.fa
 gzip PRJNA923323/*.fa
+
+
+# For Black6
+
+wget https://ftp.ensembl.org/pub/release-108/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz
+
+mv Mus_musculus.GRCm39.dna.primary_assembly.fa.gz PRJNA923323/Mus_musculus_c57bl6j.fa
