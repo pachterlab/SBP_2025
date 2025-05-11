@@ -12,3 +12,8 @@ klue distinguish -t 18 --pipe -k 31 --combinations $path/Mus_musculus_c57bl6j.fa
 </pre>
 
 <pre>python count_kmers.py out.fa 31 > out.counts.txt</pre>
+
+For the demultiplexing of mouse strains:
+
+<pre>kb count --h5ad --overwrite -w r1r2r3.txt --verbose --workflow=standard -g distinguish.Mus_musculus.Mus_musculus_aj_Mus_musculus_pwkphj.t2g -x 1,10,18,1,48,56,1,78,86:1,0,10:0,0,0 -i distinguish.Mus_musculus_aj_Mus_musculus_pwkphj.idx -t 24 -o out_demultiplex_Mus_musculus_aj_Mus_musculus_pwkphj/ --batch-barcodes batch_all6.txt</pre>
+
