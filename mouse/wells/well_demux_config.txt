@@ -1,0 +1,30 @@
+# splitcode config file for demultiplexing barcodes into wells
+# A hamming distance error of 1 is permitted
+# For R1:
+## If there is a hamming distance collision (e.g. CATTCCTA vs. CATTCCAT), the read is considered unassigned
+### (Putting $ after the barcode filenames AND giving each filename a different ID ensures that every single barcode gets a unique ID)
+### (Each barcode having a unique ID allows the "hamming distance collision = unassigned" to happen since multiple IDs being mapped is not allowed)
+### (Note: Barcodes are complex enough so that each barcode is at least two hamming distances away from other barcodes [i.e. cases like CATTCCTA vs. CATTCCTT won't happen]; but there are some collisions).
+# For R2/R3: These aren't used for demultiplexing so we'll be more lax with these (we don't put $ after the filenames so each barcode in R2 and each barcode in R3 get the same ID, therefore "hamming distance collision" still results in read getting assigned)
+## Thus, R2/R3 is more of a QC (ensuring that the barcode actually exists)
+# The *.select.txt files (we'll create one for each [sub]library) is used to specify the demultiplexing into separate files
+## An example of one line in the *.select.txt file would look like "r2_3,r2_3,A 004_67B_A" meaning we'll demultiplex that combination into the paired-end read files: 004_67B_A_0.fastq.gz and 004_67B_A_1.fastq.gz
+# Example usage is as follows:
+## splitcode -t 24 -c well_demux_config.txt -N 2 -y select.txt -u 004_67B_unassigned_1.fq,004_67B_unassigned_2.fq --gzip --compress=9 --no-output --no-outb $input_dir/004_67B_R1.fastq.gz $input_dir/004_67B_R2.fastq.gz
+
+tags	distances	ids	groups	locations
+barcodes/A.txt$	1	R1_A	A	1,78,86
+barcodes/B.txt$	1	R1_B	B	1,78,86
+barcodes/C.txt$	1	R1_C	C	1,78,86
+barcodes/D.txt$	1	R1_D	D	1,78,86
+barcodes/E.txt$	1	R1_E	E	1,78,86
+barcodes/F.txt$	1	R1_F	F	1,78,86
+barcodes/G.txt$	1	R1_G	G	1,78,86
+barcodes/H.txt$	1	R1_H	H	1,78,86
+barcodes/AB.txt$	1	R1_AB	AB	1,78,86
+barcodes/CD.txt$	1	R1_CD	CD	1,78,86
+barcodes/EF.txt$	1	R1_EF	EF	1,78,86
+barcodes/GH.txt$	1	R1_GH	GH	1,78,86
+barcodes/r2_r3.txt	1	R2	r2_3	1,48,56
+barcodes/r2_r3.txt	1	R3	r2_3	1,10,18
+
