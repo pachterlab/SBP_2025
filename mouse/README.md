@@ -2,7 +2,7 @@
 
 Download mouse genome assemblies:
 
-<pre>./download_assemblies.sh<</pre>
+<pre>./download_assemblies.sh</pre>
 
 Obtain set combinations of distinguishing k-mers and count them for the raw assembly files
 
